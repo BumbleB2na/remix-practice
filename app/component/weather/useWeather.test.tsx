@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import useWeather from "./useWeather"
 import { renderHook, waitFor } from '@testing-library/react'
-import WeatherData from './WeatherData';
+import WeatherData, { WeatherDataSchema } from './WeatherData';
 
 const MOCK_WEATHER_API_RESPONSE:WeatherData = { current: { temperature_2m: 10.01, wind_speed_10m: 11.11 }, current_units: { temperature_2m: 'C', wind_speed_10m: 'km/h' } }
 
@@ -27,5 +27,6 @@ describe('useWeather', () => {
 		expect(weatherData).toBe(null)
 		await waitFor(() => expect(result.current[0]).not.toBe(null))
 		expect(result.current[0]).toEqual(MOCK_WEATHER_API_RESPONSE)
+		expect(WeatherDataSchema.parse(result.current[0])).toEqual(MOCK_WEATHER_API_RESPONSE)
 	})
 })
