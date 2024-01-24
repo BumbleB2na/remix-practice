@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
-import WeatherData from "./WeatherData"
+import WeatherData, { WeatherDataSchema } from "./WeatherData"
 
 const useWeather = (weatherValue?: WeatherData) => {
 	const [weather, setWeather] = useState<WeatherData | null>(weatherValue || null)
 
 	useEffect(() => {
-		const API_QUERY = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m'
+		const API_QUERY_CALGARY = 'https://api.open-meteo.com/v1/forecast?latitude=51.04&longitude=-114.07&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m'
 		const fetchWeatherApi = async () => {				
-			return await fetch(API_QUERY)
+			return await fetch(API_QUERY_CALGARY)
 				.then(async (result) => {
-					setWeather(await result.json())
+					setWeather(WeatherDataSchema.parse(await result.json()))
 				})
 		}
 

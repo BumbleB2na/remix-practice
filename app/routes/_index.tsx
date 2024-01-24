@@ -15,7 +15,7 @@ export default function Index() {
 		<div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
 			<h1>Weather</h1>
 			{weather === null && <p>Loading...</p>}
-			{weather !== null && <p>{weather.current.temperature_2m}{weather.current_units.temperature_2m}</p>}
+			{weather !== null && <p>Calgary temperature: {weather.current.temperature_2m}{weather.current_units.temperature_2m}, wind speed: {weather.current.wind_speed_10m}{weather.current_units.wind_speed_10m}</p>}
 		</div>
 	);
 }
