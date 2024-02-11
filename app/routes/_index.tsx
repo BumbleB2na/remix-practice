@@ -1,21 +1,44 @@
 import type { MetaFunction } from "@remix-run/node";
-import useWeather from "~/component/weather/useWeather";
+import { Link } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
 	return [
-		{ title: "New Remix App" },
-		{ name: "description", content: "Welcome to Remix!" },
+		{ title: "Remix Practice" },
+		{ name: "description", content: "A container for practicing react, typescript, remix, jest, etc" },
 	];
 };
 
-export default function Index() {
-	const [weather] = useWeather()
+export function LinkToIndex() {
+	return (
+		<nav>
+			&lt; <Link to="/">Contents</Link>
+		</nav>
+	);
+}
 
+export function Links() {
+	return (
+		<nav>
+			&gt; <Link to="/weather">Weather</Link>
+		</nav>
+	);
+}
+
+import { ReactNode } from "react";
+
+export function Wrapper({ children }: { children: ReactNode }) {
 	return (
 		<div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-			<h1>Weather</h1>
-			{weather === null && <p>Loading...</p>}
-			{weather !== null && <p>Calgary temperature: {weather.current.temperature_2m}{weather.current_units.temperature_2m}, wind speed: {weather.current.wind_speed_10m}{weather.current_units.wind_speed_10m}</p>}
+			{children}
 		</div>
+	)
+}
+
+export default function Index() {
+	return (
+		<Wrapper>
+			<h1>Contents</h1>
+			<Links />
+		</Wrapper>
 	);
 }

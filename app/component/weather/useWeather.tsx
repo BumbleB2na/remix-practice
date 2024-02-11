@@ -31,9 +31,7 @@ const useWeather = (weatherValue?: WeatherData) => {
 		}
 
 		return () => {
-			if (weather !== null) {
-				clearInterval(weatherInterval)
-			}
+			clearInterval(weatherInterval)
 		}
 	}, [weather])
 
