@@ -5,7 +5,7 @@ import { LinkToIndex, Wrapper } from "./_index";
 export const meta: MetaFunction = () => {
 	return [
 		{ title: "Weather" },
-		{ name: "description", content: "Gets the current weather" },
+		{ name: "description", content: "Gets the current" },
 	];
 };
 

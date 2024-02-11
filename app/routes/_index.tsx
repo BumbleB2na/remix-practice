@@ -20,6 +20,7 @@ export function Links() {
 	return (
 		<nav>
 			&gt; <Link to="/weather">Weather</Link>
+			&gt; <Link to="/exampe">Example (jsx)</Link>
 		</nav>
 	);
 }
